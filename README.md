@@ -30,8 +30,8 @@ and a jar including all dependencies (*fatjar*) is generated in the folder `targ
 
 
 
-Processing a Wikipedia Dump (Hadoop-based)
-==========================================
+Processing a Wikipedia Dump 
+===========================
 Before the toolkit can be used, a database needs to be build from a Wikipedia dump. To be able to create the database, information needs to be extracted from the dump - this pre-processing step is based on Hadoop jobs.
 
 The original description on the project's sourceforge page can be found [here](http://sourceforge.net/apps/mediawiki/wikipedia-miner/index.php?title=Extraction).
@@ -39,8 +39,8 @@ The original description on the project's sourceforge page can be found [here](h
 Steps:
 
 + Download a Wikipedia dump (usually ending in pages-articles.xml) and copy it to a folder (e.g. `input`) on HDFS
-+ Upload `configs/languages.xml` to the same folder (should work for English out-of-the-box)
-+ Upload `models/en-sent.bin` to the same folder (for English Wikipedia; other languages require different sentence detection models)
++ Upload `configs/languages.xml` to the same HDFS folder (should work for English out-of-the-box)
++ Upload `models/en-sent.bin` to the same HDFS folder (for English Wikipedia; other languages require different sentence detection models)
 + Create an output folder (e.g. `output`) on HDFS
 + Run (`en` is here the language code for English): 
 
@@ -52,12 +52,21 @@ hadoop jar WikipediaMiner-0.0.1-SNAPSHOT-fatjar.jar org.wikipedia.miner.extracti
 	input/en-sent.bin output
 ```
 
-+ Download the folder `output/final` from HDFS (extracted summaries)
++ Download the contents of the HDFS folder `output/final` to the local file system (all subsequent steps are not based on Hadoop jobs).
 
 
 Building the Database
 =====================
-To build the database, needed are the original Wikipedia dump file (...pages-articles.xml) and the extracted summaries created in the previous step. 
+
+To build the database, copy the original Wikipedia dump file (...pages-articles.xml) into the local folder from the previous step.
+Make the necessary changes to the file `configs/wikipedia-template.xml`: at least change `<langCode>` (`en` for English), `<dataDirectory>` (the local folder from the previous step), and `<databaseDirectory>` (folder where the database will be stored). All other parameters are optional, though changing them will likely yield better performance.
+
+Run:
+
+```
+mvn exec:java -Dexec.mainClass="org.wikipedia.miner.util.EnvironmentBuilder" \
+	-Dexec.args="/local/wikipediaDumps/20120802/wikipedia-template.xml"
+```
 
 
 
