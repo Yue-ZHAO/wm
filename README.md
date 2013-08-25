@@ -10,7 +10,6 @@ Build JAR
 =========
 
 The pom.xml file needs to be adapted - a few of the dependent jars cannot be found in public Maven repositories and the link has to be hardcoded in pom.xml (the jars can be found in the `lib` folder):
-+ je-4.0.103.jar 
 + jsc.jar
 + servlet-api.jar
 + weka-wrapper-1.0.jar
