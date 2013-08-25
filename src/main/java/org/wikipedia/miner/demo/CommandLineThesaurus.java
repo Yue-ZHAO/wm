@@ -18,9 +18,6 @@ public class CommandLineThesaurus {
 	
 	public CommandLineThesaurus(WikipediaConfiguration conf) throws EnvironmentLockedException, DatabaseException {
 		
-		
-		
-		
 		wikipedia = new Wikipedia(conf, false) ;	
 		input = new BufferedReader(new InputStreamReader(System.in));
 		stripper = new MarkupStripper() ;

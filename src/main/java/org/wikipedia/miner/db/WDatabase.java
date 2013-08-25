@@ -503,6 +503,8 @@ public abstract class WDatabase<K,V> {
 	public void finalize() {
 		if (database != null) {
 			Logger.getLogger(WIterator.class).warn("Unclosed database '" + name + "'. You may be causing a memory leak.") ;
+			Logger.getLogger(WIterator.class).warn("Trying to close ....");
+			close();
 		}
 	}
 	
