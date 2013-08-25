@@ -37,9 +37,15 @@ Steps:
 + Upload `configs/languages.xml` to the same folder (should work for English out-of-the-box)
 + Upload `models/en-sent.bin` to the same folder (for English Wikipedia; other languages require different sentence detection models)
 + Create an output folder (e.g. `output`) on HDFS
-+ Run: 
++ Run (`en` is here the language code for English): 
 
-`hadoop jar WikipediaMiner-0.0.1-SNAPSHOT-fatjar.jar org.wikipedia.miner.extraction.DumpExtractor input/enwiki-xxxx-pages-articles.xml input/languages.xml en input/en-sent.bin output`
+```
+hadoop jar WikipediaMiner-0.0.1-SNAPSHOT-fatjar.jar org.wikipedia.miner.extraction.DumpExtractor \
+	input/enwiki-xxxx-pages-articles.xml \
+	input/languages.xml \
+	en \
+	input/en-sent.bin output
+```
 
 + Download the folder `output/final` from HDFS (extracted summaries)
 
