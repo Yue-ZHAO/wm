@@ -49,7 +49,8 @@ hadoop jar WikipediaMiner-0.0.1-SNAPSHOT-fatjar.jar org.wikipedia.miner.extracti
 	input/enwiki-xxxx-pages-articles.xml \
 	input/languages.xml \
 	en \
-	input/en-sent.bin output
+	input/en-sent.bin \
+ 	output
 ```
 
 + Download the contents of the HDFS folder `output/final` to the local file system (all subsequent steps are not based on Hadoop jobs).
@@ -65,7 +66,7 @@ Run:
 
 ```
 mvn exec:java -Dexec.mainClass="org.wikipedia.miner.util.EnvironmentBuilder" \
-	-Dexec.args="/local/wikipediaDumps/20120802/wikipedia-template.xml"
+	-Dexec.args="/path/to/wikipedia-template.xml"
 ```
 
 
