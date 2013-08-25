@@ -9,12 +9,16 @@ Why a fork: (i) to transform it into a mvn project (instead of using the ant bui
 Build JAR
 =========
 
-The pom.xml file needs to be adapted - a few of the dependent jars cannot be found in public Maven repositories and the link has to be hardcoded in pom.xml (the jars can be found in the `lib` folder):
+The repo can be cloned with the following command:
+
+$ git clone git://github.com/chauff/wm.git
+
+Before the project can be build with Maven, the pom.xml file needs to be adapted - a few of the dependent jars cannot be found in public Maven repositories and the link has to be hardcoded in pom.xml (the jars can be found in the `lib` folder):
 + jsc.jar
 + servlet-api.jar
 + weka-wrapper-1.0.jar
 
-Run:
+Then, to build the project, run:
 
 ```
 mvn clean package
