@@ -11,7 +11,9 @@ Build JAR
 
 The repo can be cloned with the following command:
 
+```
 $ git clone git://github.com/chauff/wm.git
+```
 
 Before the project can be build with Maven, the pom.xml file needs to be adapted - a few of the dependent jars cannot be found in public Maven repositories and the link has to be hardcoded in pom.xml (the jars can be found in the `lib` folder):
 + jsc.jar
