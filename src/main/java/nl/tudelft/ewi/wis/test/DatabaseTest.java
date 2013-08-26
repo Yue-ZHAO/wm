@@ -23,7 +23,7 @@ public class DatabaseTest {
 		try {
 			
 			if(args.length!=2) {
-				System.err.println("Error: expect wikipedia-template.xml path as only argument!");
+				System.err.println("Error: expecting two input arguments - [wikipedia-template.xml path] [example concept, e.g. cat]");
 				System.exit(1);
 			}
 			
@@ -36,7 +36,8 @@ public class DatabaseTest {
 				System.out.println("\t -" + sense.getTitle());
 
 			Article artConcept = lblConcept.getSenses()[0];
-			System.out.println(artConcept.getSentenceMarkup(0));
+			System.out.println("\nSentence for the first sense: ");
+			System.out.println("\t"+artConcept.getSentenceMarkup(0));
 
 			System.out.println("\nSynonyms: ");
 			for (Article.Label synConcept : artConcept.getLabels())

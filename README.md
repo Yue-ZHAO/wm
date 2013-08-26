@@ -62,14 +62,18 @@ Building the Database
 =====================
 
 To build the database, copy the original Wikipedia dump file (...pages-articles.xml) into the local folder from the previous step.
-Make the necessary changes to the file `configs/wikipedia-template.xml`: at least change `<langCode>` (`en` for English), `<dataDirectory>` (the local folder from the previous step), and `<databaseDirectory>` (folder where the database will be stored). All other parameters are optional, though changing them will likely yield better performance.
+Make the necessary changes to the configuration file `configs/wikipedia-template.xml`: at least change `<langCode>` (`en` for English), `<dataDirectory>` (the local folder from the previous step), and `<databaseDirectory>` (folder where the database will be stored). 
 
-Run:
+All other configuration parameters are optional, though changing them will likely yield better performance - the models for the last five parameters for the English language are included in the ```models``` directory (just to be clear: not by me, this is the original code/data from David Milne) and the path to these files can just be added.
+
+Then run:
 
 ```
 java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar org.wikipedia.miner.util.EnvironmentBuilder \
 	/path/to/wikipedia-template.xml
 ```
+
+to build the database. This process will take a while.
 
 
 Testing the Database
@@ -81,4 +85,47 @@ java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar nl.tudelft.ewi.wis.test.DatabaseT
 	/path/to/wikipedia-template.xml Cat
 ```
 
-The program reads
+where the second parameter (here: Cat) can be any Wikipedia concept. The program just prints out translations, synonyms, related concepts, etc.
+If no error occurs in the process, the database was built correctly.
+
+
+Running a Line-by-Line Annotation Experiment
+============================================
+This program annotates the text of a file, one line at a time. The format of the file is expected to be: [id] [text] (per line), e.g.
+
+```
+1 The domestic cat is a small, usually furry, domesticated, and carnivorous mammal. 
+2 Paleo-indians migrated from Asia to what is now the United States 
+	mainland around 12,000 years ago.
+3 The United States is a developed country and has the world's largest 
+	national economy, with an estimated 2013 GDP of $16.2 trillion –22% of 
+	global GDP at purchasing-power parity, as of 2011.
+```
+The id does not need to be numeric, but a whitespace is required after the id (no tab!).
+The minimum sense probability can be set through wikipedia-template.xml.
+The [text] can be in HTML format, as a HTML preprocessor is used (not really tested yet).
+
+Then, run:
+
+```
+java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar nl.tudelft.ewi.wis.util.LineByLineAnnotation \ 		
+	/path/to/wikipedia-template.xml \
+	/path/to/input-file \
+	/path/to/output-file
+```
+
+The output should look similar to this one:
+
+```
+1 The [[Cat|domestic cat]] is a small, usually furry, [[Domestication|domesticated]], 
+	and [[Carnivore|carnivorous]] [[mammal]]. 
+2 [[Paleo-indians]] [[Settlement of the Americas|migrated from Asia]] to what is 
+	now the [[United States]] mainland around 12,000 years ago.
+3 The [[United States]] is a [[developed country]] and has the world's largest
+	[[Economy|national economy]], with an estimated 2013 [[Gross domestic product
+	|GDP]] of $16.2 [[Orders of magnitude (numbers)|trillion]] –22% of global
+	[[Gross domestic product|GDP]] at [[Purchasing power parity|purchasing-power 
+	parity]], as of 2011.
+```
+
+(run with `<minSenseProbability>0.1</minSenseProbability>`).
