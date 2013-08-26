@@ -78,32 +78,30 @@ to build the database. This process will take a while.
 
 Testing the Database
 ====================
-To test if the created database works, run (program will take a while to run):
+To test if the created database works, be patient and run:
 
 ```
 java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar nl.tudelft.ewi.wis.test.DatabaseTest \ 		
 	/path/to/wikipedia-template.xml Cat
 ```
 
-where the second parameter (here: Cat) can be any Wikipedia concept. The program just prints out translations, synonyms, related concepts, etc.
+where the second parameter (here: `Cat`) can be any Wikipedia concept. The program just prints out translations, synonyms, related concepts, etc.
 If no error occurs in the process, the database was built correctly.
 
 
-Running a Line-by-Line Annotation Experiment
+Line-by-Line Annotation Experiment
 ============================================
-This program annotates the text of a file, one line at a time. The format of the file is expected to be: [id] [text] (per line), e.g.
+This program annotates the text of a file, one line at a time. 
+
+The format of the file is expected to be: `[id] [text]` (per line), e.g.
 
 ```
 1 The domestic cat is a small, usually furry, domesticated, and carnivorous mammal. 
-2 Paleo-indians migrated from Asia to what is now the United States 
-	mainland around 12,000 years ago.
-3 The United States is a developed country and has the world's largest 
-	national economy, with an estimated 2013 GDP of $16.2 trillion –22% of 
-	global GDP at purchasing-power parity, as of 2011.
+2 Paleo-indians migrated from Asia to what is now the United States mainland around 12,000 years ago.
+3 The United States is a developed country and has the world's largest national economy, with an estimated 2013 GDP of $16.2 trillion –22% of global GDP at purchasing-power parity, as of 2011.
 ```
-The id does not need to be numeric, but a whitespace is required after the id (no tab!).
+The `[id]` does not need to be numeric, but a whitespace is required after the id (no tab!).
 The minimum sense probability can be set through wikipedia-template.xml.
-The [text] can be in HTML format, as a HTML preprocessor is used (not really tested yet).
 
 Then, run:
 
@@ -114,18 +112,12 @@ java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar nl.tudelft.ewi.wis.util.LineByLin
 	/path/to/output-file
 ```
 
-The output should look similar to this one:
+The output should look like this:
 
 ```
-1 The [[Cat|domestic cat]] is a small, usually furry, [[Domestication|domesticated]], 
-	and [[Carnivore|carnivorous]] [[mammal]]. 
-2 [[Paleo-indians]] [[Settlement of the Americas|migrated from Asia]] to what is 
-	now the [[United States]] mainland around 12,000 years ago.
-3 The [[United States]] is a [[developed country]] and has the world's largest
-	[[Economy|national economy]], with an estimated 2013 [[Gross domestic product
-	|GDP]] of $16.2 [[Orders of magnitude (numbers)|trillion]] –22% of global
-	[[Gross domestic product|GDP]] at [[Purchasing power parity|purchasing-power 
-	parity]], as of 2011.
+1 The [[Cat|domestic cat]] is a small, usually furry, [[Domestication|domesticated]], and [[Carnivore|carnivorous]] [[mammal]]. 
+2 [[Paleo-indians]] [[Settlement of the Americas|migrated from Asia]] to what is now the [[United States]] mainland around 12,000 years ago.
+3 The [[United States]] is a [[developed country]] and has the world's largest [[Economy|national economy]], with an estimated 2013 [[Gross domestic product|GDP]] of $16.2 [[Orders of magnitude (numbers)|trillion]] –22% of global [[Gross domestic product|GDP]] at [[Purchasing power parity|purchasing-power parity]], as of 2011.
 ```
 
-(run with `<minSenseProbability>0.1</minSenseProbability>`).
+(output generated with `<minSenseProbability>0.1</minSenseProbability>`).
