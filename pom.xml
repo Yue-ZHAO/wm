@@ -51,9 +51,6 @@
 									<shadedArtifactAttached>true</shadedArtifactAttached>
 									<shadedClassifierName>fatjar</shadedClassifierName>
 									<artifactSet>
-										<excludes>
-											<exclude>org.apache.hadoop:*</exclude>
-										</excludes>
 									</artifactSet>
 									<filters>
 										<filter>

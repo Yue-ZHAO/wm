@@ -21,34 +21,53 @@ public class DatabaseTest {
 
 	public static void main(String args[]) {
 		try {
+			
+			if(args.length!=2) {
+				System.err.println("Error: expect wikipedia-template.xml path as only argument!");
+				System.exit(1);
+			}
+			
 			Wikipedia w = new Wikipedia(new File(args[0]), false);
 
-			Label lblDog = w.getLabel("Dog", null);
-			System.out.println("Senses for Dog:");
-			for (Label.Sense sense : lblDog.getSenses())
-				System.out.println(" -" + sense.getTitle());
+			String concept = args[1];
+			Label lblConcept = w.getLabel(concept, null);
+			System.out.println("\nSenses for "+concept+":");
+			for (Label.Sense sense : lblConcept.getSenses())
+				System.out.println("\t -" + sense.getTitle());
 
-			Article artDog = lblDog.getSenses()[0];
-			System.out.println(artDog.getSentenceMarkup(0));
+			Article artConcept = lblConcept.getSenses()[0];
+			System.out.println(artConcept.getSentenceMarkup(0));
 
-			System.out.println("Synonyms: ");
-			for (Article.Label synDog : artDog.getLabels())
-				System.out.println(" -" + synDog.getText());
+			System.out.println("\nSynonyms: ");
+			for (Article.Label synConcept : artConcept.getLabels())
+				System.out.println("\t -" + synConcept.getText());
 
-			System.out.println("Translations: ");
-			TreeMap<String, String> trans = artDog.getTranslations();
-			for (String e : trans.keySet())
-				System.out.println(" -" + trans.get(e) + " (" + e + ")");
+			System.out.println("\n10 Translations: ");
+			int counter = 0;
+			TreeMap<String, String> trans = artConcept.getTranslations();
+			for (String e : trans.keySet()) {
+				System.out.println("\t -" + trans.get(e) + " (" + e + ")");
+				counter++;
+				if(counter>=10) {
+					break;
+				}
+			}
 
-			Article[] relatedTopics = artDog.getLinksOut();
+			Article[] relatedTopics = artConcept.getLinksOut();
 			ArticleComparer comparer = new ArticleComparer(w);
 			for (Article rt : relatedTopics)
-				rt.setWeight(comparer.getRelatedness(artDog, rt));
+				rt.setWeight(comparer.getRelatedness(artConcept, rt));
 			Arrays.sort(relatedTopics);
 
-			System.out.println("Related Topics: ");
-			for (Article rt : relatedTopics)
-				System.out.println(" -" + rt.getTitle());
+			System.out.println("\n10 Related Topics: ");
+			counter=0;
+			for (Article rt : relatedTopics) {
+				System.out.println("\t -" + rt.getTitle());
+				counter++;
+				if(counter>=10) {
+					break;
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

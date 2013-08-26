@@ -3,10 +3,10 @@ wm
 
 This is my fork of the [Wikipedia Miner Toolkit](http://sourceforge.net/projects/wikipedia-miner/) written by David Milne.
 
-Why a fork: (i) to transform it into a mvn project (instead of using the ant build tool), and, (ii) to keep my documentation of how to do things in one place (official wikipedia-miner wiki is often down).
+Why a fork: (i) to transform it into a mvn project (instead of using the ant build tool), (ii) to keep my documentation of how to do things in one place (official wikipedia-miner wiki is often down), and (iii) to fix small errors.
 
 Significant changes:
-+ Using the included weka-wrapper jar led to several errors; including the (more up-to-date) source provided by David Milne [here](http://code.google.com/p/weka-wrapper/) solved these problems.
++ Using the included weka-wrapper jar led to several errors; instead including the (more up-to-date) source provided by David Milne [here](http://code.google.com/p/weka-wrapper/) solved these problems.
 
 
 Build JAR
@@ -67,13 +67,18 @@ Make the necessary changes to the file `configs/wikipedia-template.xml`: at leas
 Run:
 
 ```
-mvn exec:java -Dexec.mainClass="org.wikipedia.miner.util.EnvironmentBuilder" \
-	-Dexec.args="/path/to/wikipedia-template.xml"
+java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar org.wikipedia.miner.util.EnvironmentBuilder \
+	/path/to/wikipedia-template.xml
 ```
 
 
+Testing the Database
+====================
+To test if the created database works, run (program will take a while to run):
 
+```
+java -cp WikipediaMiner-XX-SNAPSHOT-fatjar.jar nl.tudelft.ewi.wis.test.DatabaseTest \ 		
+	/path/to/wikipedia-template.xml Cat
+```
 
-
-
-
+The program reads
