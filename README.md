@@ -3,6 +3,15 @@ wm
 
 This is my fork of the [Wikipedia Miner Toolkit](http://sourceforge.net/projects/wikipedia-miner/) written by David Milne.
 
+If you use the source code, please cite ([ScienceDirect](http://www.sciencedirect.com/science/article/pii/S000437021200077X), [pdf](http://www.cs.waikato.ac.nz/~ihw/papers/12-DM-IHW-OStoolkit-wikimining.pdf)):
+
+```
+    David Milne, Ian H. Witten
+    An open-source toolkit for mining Wikipedia
+    Artificial Intelligence, Volume 194, January 2013, Pages 222–239
+```
+
+
 Why a fork: (i) to transform it into a maven project (instead of using the ant build tool), (ii) to keep essential documentation of how to do things in one place (the official wikipedia-miner wiki is often down), and (iii) to fix small errors.
 
 Significant changes:

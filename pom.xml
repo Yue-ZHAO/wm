@@ -155,7 +155,7 @@
 			<artifactId>servlet-api</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>/Users/claudiahauff/javaWorkspace/wm/lib/servlet-api.jar</systemPath>
+			<systemPath>/Users/claudiahauff/javaWorkspace/WikipediaMiner/lib/servlet-api.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -163,7 +163,7 @@
 			<artifactId>jsc</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>/Users/claudiahauff/javaWorkspace/wm/lib/jsc.jar</systemPath>
+			<systemPath>/Users/claudiahauff/javaWorkspace/WikipediaMiner/lib/jsc.jar</systemPath>
 		</dependency>
 
 	</dependencies>
