@@ -18,6 +18,7 @@
 			</activation>
 			<build>
 				<plugins>
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
@@ -157,15 +158,7 @@
 			<artifactId>servlet-api</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>/local/wikipedia-miner-1.2.0/lib/servlet-api.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>org.dmilne</groupId>
-			<artifactId>weka-wrapper</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>/local/wikipedia-miner-1.2.0/lib/weka-wrapper-1.0.jar</systemPath>
+			<systemPath>/Users/claudiahauff/javaWorkspace/wm/lib/servlet-api.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -173,7 +166,7 @@
 			<artifactId>jsc</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
-			<systemPath>/local/wikipedia-miner-1.2.0/lib/jsc.jar</systemPath>
+			<systemPath>/Users/claudiahauff/javaWorkspace/wm/lib/jsc.jar</systemPath>
 		</dependency>
 
 	</dependencies>

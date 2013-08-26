@@ -1,0 +1,6 @@
+analyseLocally=false
+eclipse.preferences.version=1
+extraProperties=
+projectKey=org.wikipedia.miner\:WikipediaMiner
+serverUrl=http\://localhost\:9999
+version=2
