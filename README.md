@@ -1,9 +1,12 @@
 wm
 ==
 
-This is my fork of the Wikipedia Miner Toolkit: http://sourceforge.net/projects/wikipedia-miner/ written by David Milne.
+This is my fork of the [Wikipedia Miner Toolkit](http://sourceforge.net/projects/wikipedia-miner/) written by David Milne.
 
 Why a fork: (i) to transform it into a mvn project (instead of using the ant build tool), and, (ii) to keep my documentation of how to do things in one place (official wikipedia-miner wiki is often down).
+
+Significant changes:
++ Using the included weka-wrapper jar led to several errors; including the (more up-to-date) source provided by David Milne [here](http://code.google.com/p/weka-wrapper/) solved these problems.
 
 
 Build JAR
